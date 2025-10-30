@@ -1,4 +1,4 @@
-import { GlobalOutlined } from '@ant-design/icons';
+import { GlobalOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 
 export const useMenuItems = () => {
@@ -11,6 +11,15 @@ export const useMenuItems = () => {
       ),
       key: "countries",
       icon: <GlobalOutlined />,
+    },
+    {
+      label: (
+        <Link to={"/about"}>
+          About
+        </Link>
+      ),
+      key: "about",
+      icon: <InfoCircleOutlined />,
     },
   ];
 };

@@ -1,5 +1,6 @@
 import { WieldyContainer } from "@wieldy/components";
-import { Typography } from "antd";
+import { Typography, Button } from "antd";
+import { InfoCircleOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import Menubar from "./Menubar";
 import Topbar from "./Topbar";
@@ -10,17 +11,20 @@ const Header3 = () => {
       <Topbar />
       <div className="pt-6">
         <WieldyContainer>
-          <div className="flex items-center leading-[64px]">
-            <div className="flex">
+          <div className="flex items-center justify-between leading-[64px]">
+            <div className="flex items-center flex-1">
               <Link to="/" className="inline-flex mr-6">
                 <Typography.Title level={3} className="m-0 whitespace-nowrap">
                   KTL Dashboard
                 </Typography.Title>
               </Link>
+              <Menubar />
             </div>
-            <Menubar />
-
-
+            <Link to="/about">
+              <Button type="text" icon={<InfoCircleOutlined />} size="large">
+                About
+              </Button>
+            </Link>
           </div>
         </WieldyContainer>
       </div>

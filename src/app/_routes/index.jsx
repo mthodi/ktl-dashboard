@@ -2,6 +2,7 @@ import { Page } from "@/_components/Page";
 import { SoloLayout } from "@/_layouts/SoloLayout";
 import CountriesPage from "@/pages/dashboards/countries";
 import CountryDetail from "@/pages/dashboards/countries/CountryDetail";
+import About from "@/pages/About";
 import Error404 from "@/pages/extra-pages/404";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -20,6 +21,10 @@ const routes = [
       {
         path: "/dashboards/countries/:code",
         element: <Page Component={CountryDetail} />,
+      },
+      {
+        path: "/about",
+        element: <Page Component={About} />,
       },
     ],
   },
