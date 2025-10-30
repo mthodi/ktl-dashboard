@@ -41,13 +41,6 @@ const Customizer = () => {
           <LocaleOptions />
         </Space>
       </Drawer>
-
-      <div
-        onClick={showCustomizer}
-        className="fixed right-0 top-36 z-50 rounded-s-[50px] cursor-pointer h-11 py-3 px-5 text-2xl text-white bg-gradient-to-l from-[#fa8c16] to-[#f5222d]"
-      >
-        <RiSettings2Line className="animate-spin" />
-      </div>
     </>
   );
 };

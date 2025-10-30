@@ -1,6 +1,4 @@
 import { WieldyContainer } from "@wieldy/components";
-import { Button, Divider, Typography } from "antd";
-import { TfiAnnouncement } from "react-icons/tfi";
 
 const Topbar = () => {
   return (

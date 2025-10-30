@@ -1,12 +1,10 @@
-import { ASSET_IMAGES } from "@/_utilities/paths";
 import { WieldyContainer } from "@wieldy/components";
-import { useWieldyTheme } from "@wieldy/components/WieldyTheme/hooks";
-import { Image } from "antd";
+import { Typography } from "antd";
 import { Link } from "react-router-dom";
 import Menubar from "./Menubar";
 import Topbar from "./Topbar";
+
 const Header3 = () => {
-  const { themeMode } = useWieldyTheme();
   return (
     <div className="relative flex-1 xl:before:block xl:before:absolute xl:before:right-[8vw] xl:before:top-[-218px] xl:before:h-[350px] xl:before:w-[280px] xl:before:bg-black/10 xl:before:dark:bg-white/20 xl:before:rotate-45 xl:before:rounded-b-[140px]">
       <Topbar />
@@ -15,21 +13,14 @@ const Header3 = () => {
           <div className="flex items-center leading-[64px]">
             <div className="flex">
               <Link to="/" className="inline-flex mr-6">
-                <Image
-                  src={
-                    themeMode === "light"
-                      ? `${ASSET_IMAGES}/logo.png`
-                      : `${ASSET_IMAGES}/logo-white.png`
-                  }
-                  alt="wieldy-logo"
-                  className="w-[90px]"
-                  preview={false}
-                />
+                <Typography.Title level={3} className="m-0 whitespace-nowrap">
+                  KTL Dashboard
+                </Typography.Title>
               </Link>
             </div>
             <Menubar />
 
-            
+
           </div>
         </WieldyContainer>
       </div>
