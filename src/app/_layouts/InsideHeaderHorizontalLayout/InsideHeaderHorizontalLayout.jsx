@@ -1,4 +1,3 @@
-import { Customizer } from "@/_components/Customizer";
 import { Footer1 } from "@/_components/Footer1";
 import { Header3 } from "@/_components/Header3";
 import { WieldyContainer, WieldyLayout } from "@wieldy/components";
@@ -16,7 +15,6 @@ export const InsideHeaderHorizontalLayout = ({ children }) => {
     >
       <WieldyContainer>
         {children}
-        <Customizer />
       </WieldyContainer>
     </WieldyLayout>
   );
