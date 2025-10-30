@@ -1,12 +1,8 @@
 import { ASSET_IMAGES } from "@/_utilities/paths";
 import { WieldyContainer } from "@wieldy/components";
 import { useWieldyTheme } from "@wieldy/components/WieldyTheme/hooks";
-import { Image, Space } from "antd";
+import { Image } from "antd";
 import { Link } from "react-router-dom";
-import { MessagesPopover } from "../MessagesPopover";
-import { NotificationsPopover } from "../NotificationsPopover";
-import { SearchPopover } from "../SearchPopover";
-import { UserPopover } from "../UserPopover";
 import Menubar from "./Menubar";
 import Topbar from "./Topbar";
 const Header3 = () => {
@@ -33,14 +29,7 @@ const Header3 = () => {
             </div>
             <Menubar />
 
-            <div className="flex items-center ml-auto pl-3 leading-none">
-              <Space>
-                <SearchPopover />
-                <NotificationsPopover />
-                <MessagesPopover />
-                <UserPopover />
-              </Space>
-            </div>
+            
           </div>
         </WieldyContainer>
       </div>

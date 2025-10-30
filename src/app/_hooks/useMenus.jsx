@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { BiBitcoin } from "react-icons/bi";
 import { RiDashboard2Fill } from "react-icons/ri";
+import { GlobalOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 
 export function useMenus() {
@@ -18,12 +18,12 @@ export function useMenus() {
           children: [
             {
               label: (
-                <Link to={"/dashboards/crypto"}>
-                  {t("sidebar.menuItem.crypto")}
+                <Link to={"/dashboards/countries"}>
+                  Countries
                 </Link>
               ),
-              key: "crypto",
-              icon: <BiBitcoin />,
+              key: "countries",
+              icon: <GlobalOutlined />,
             },
           ],
         },

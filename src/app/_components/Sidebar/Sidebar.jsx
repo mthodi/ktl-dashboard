@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 
 function selectedOption(option) {
   const parts = option?.split("/");
-  const selectedOption = option !== "/" ? parts?.pop() : "crypto";
+  const selectedOption = option !== "/" ? parts?.pop() : "countries";
   return selectedOption;
 }
 

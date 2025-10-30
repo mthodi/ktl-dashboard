@@ -7,7 +7,6 @@ import { Navigate, useLocation } from "react-router-dom";
 import { layoutConfig } from "./_config";
 
 export function DefaultLayout({ children }) {
-  const location = useLocation();
   return (
     <WieldyLayout
       header={<Header1 />}
@@ -18,7 +17,6 @@ export function DefaultLayout({ children }) {
       layoutOptions={layoutConfig.layoutOptions}
     >
       <WieldyContainer>
-        {location.pathname === "/" && <Navigate to={"/dashboards/crypto"} />}
         {children}
         {/* <Outlet /> */}
         <Customizer />

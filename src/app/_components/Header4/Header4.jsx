@@ -95,7 +95,7 @@ const Header4 = () => {
               <Space>
                 <TranslationsPopover />
                 <NotificationsPopover />
-                <MessagesPopover />
+                {/* <MessagesPopover /> */}
                 <UserPopover />
               </Space>
             </div>

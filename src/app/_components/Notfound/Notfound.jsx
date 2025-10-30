@@ -16,7 +16,7 @@ const Notfound = () => {
         <Input.Search placeholder="Search..." size="large" />
       </div>
 
-      <Button type="primary" size="large" href={"/dashboards/crypto"}>
+      <Button type="primary" size="large" href={"/"}>
         Go to home
       </Button>
     </div>
