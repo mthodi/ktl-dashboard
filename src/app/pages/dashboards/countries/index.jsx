@@ -4,6 +4,7 @@ import { GlobalOutlined, DatabaseOutlined, CalendarOutlined } from '@ant-design/
 import { useNavigate } from 'react-router-dom';
 import { fetchCountries } from '@/_utilities/api';
 import { formatLocalityScore, formatDate } from '@/_utilities/formatters';
+import CountryFlag from '@/_components/CountryFlag';
 
 const { Search } = Input;
 
@@ -63,6 +64,12 @@ export default function CountriesPage() {
       dataIndex: 'name',
       key: 'name',
       sorter: (a, b) => a.name.localeCompare(b.name),
+      render: (name, record) => (
+        <span className="flex items-center">
+          <CountryFlag countryCode={record.iso_alpha2} />
+          <span>{name}</span>
+        </span>
+      ),
     },
     {
       title: 'Region',

@@ -103,3 +103,4 @@ export function getTopN(data, n = 5) {
     .sort((a, b) => b.value - a.value)
     .slice(0, n);
 }
+

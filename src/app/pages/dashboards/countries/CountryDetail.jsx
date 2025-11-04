@@ -17,6 +17,7 @@ import {
 } from '@/_utilities/formatters';
 import LocalityPieChart from '@/_components/Charts/LocalityPieChart';
 import LocalityTrendChart from '@/_components/Charts/LocalityTrendChart';
+import CountryFlag from '@/_components/CountryFlag';
 
 const { Option } = Select;
 
@@ -143,11 +144,16 @@ export default function CountryDetail() {
               >
                 Back
               </Button>
-              <div>
-                <h1 className="text-2xl font-bold mb-1">{metrics.country_name}</h1>
-                <p className="text-gray-500">
-                  {metrics.country_code} • {metrics.region}
-                </p>
+              <div className="flex items-center gap-3">
+                <CountryFlag countryCode={metrics.country?.iso_alpha2 || countryCode} size="2.5em" />
+                <div>
+                  <h1 className="text-2xl font-bold mb-1">
+                    {metrics.country?.name || metrics.country_name || countryCode}
+                  </h1>
+                  <p className="text-gray-500">
+                    {metrics.country?.iso_alpha2 || metrics.country_code || countryCode} • {metrics.country?.region || metrics.region || 'Unknown Region'}
+                  </p>
+                </div>
               </div>
             </div>
             <div>
@@ -177,7 +183,7 @@ export default function CountryDetail() {
               <Statistic
                 title="Locality Score"
                 value={formatLocalityScore(payload.locality_score)}
-                valueStyle={{ color: payload.locality_score >= 0.55 ? '#3f8600' : '#cf1322' }}
+                valueStyle={{ color: payload.locality_score >= 0.50 ? '#3f8600' : '#cf1322' }}
               />
             </Card>
           </Col>
@@ -229,8 +235,11 @@ export default function CountryDetail() {
                 dataSource={summary.top_countries || []}
                 renderItem={(item) => (
                   <List.Item>
-                    <div className="flex justify-between w-full">
-                      <span>{item.code}</span>
+                    <div className="flex justify-between w-full items-center">
+                      <span className="flex items-center">
+                        <CountryFlag countryCode={item.code} size="1.2em" />
+                        <span>{item.code}</span>
+                      </span>
                       <span className="font-semibold">{formatLocalityScore(item.pct_bytes)}</span>
                     </div>
                   </List.Item>
@@ -276,7 +285,7 @@ export default function CountryDetail() {
 
        {/* Locality Matrix Table */}
       <div className="col-span-full">
-        <Card title="Locality Matrix - ASN Distribution">
+        <Card title="Locality Matrix - ASN & Country Distribution">
           <Table
             dataSource={payload.locality_matrix || []}
             columns={[
@@ -303,6 +312,12 @@ export default function CountryDetail() {
                   .sort()
                   .map(country => ({ text: country, value: country })),
                 onFilter: (value, record) => record.hosting_country === value,
+                render: (countryCode) => (
+                  <span className="flex items-center">
+                    <CountryFlag countryCode={countryCode} size="1.2em" />
+                    <span>{countryCode}</span>
+                  </span>
+                ),
               },
               {
                 title: 'Total Bytes',

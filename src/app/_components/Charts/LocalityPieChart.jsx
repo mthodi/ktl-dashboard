@@ -21,16 +21,16 @@ export default function LocalityPieChart({ data }) {
     {
       name: 'Local Traffic',
       value: data.local_bytes,
-      percentage: data.local_percentage
+      percentage: data.local_percentage * 100
     },
     {
       name: 'External Traffic',
       value: data.external_bytes,
-      percentage: data.external_percentage
+      percentage: data.external_percentage * 100
     }
   ];
 
-  const COLORS = ['#52c41a', '#1890ff'];
+  const COLORS = ['#ee7b07ff','#0f017aff'];
 
   const renderLabel = ({ name, percentage }) => {
     return `${name}: ${percentage}%`;
