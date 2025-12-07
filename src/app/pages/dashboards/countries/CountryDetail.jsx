@@ -132,7 +132,7 @@ export default function CountryDetail() {
   }));
 
   return (
-    <div className="grid gap-8 grid-cols-12">
+    <div className="grid gap-6 grid-cols-12">
       {/* Header Section */}
       <div className="col-span-full">
         <Card>
@@ -175,50 +175,83 @@ export default function CountryDetail() {
         </Card>
       </div>
 
-      {/* Primary Metrics Cards */}
+      {/* Primary Metrics Cards - Row 1 */}
       <div className="col-span-full">
         <Row gutter={[16, 16]}>
-          <Col xs={24} sm={12} md={8} lg={8} xl={4}>
+          <Col xs={24} sm={12} lg={6}>
             <Card>
               <Statistic
                 title="Locality Score"
-                value={formatLocalityScore(payload.locality_score)}
-                valueStyle={{ color: payload.locality_score >= 0.50 ? '#3f8600' : '#cf1322' }}
+                value={formatLocalityScore(summary.locality_score)}
+                valueStyle={{ color: summary.locality_score >= 0.50 ? '#3f8600' : '#cf1322' }}
               />
             </Card>
           </Col>
-          <Col xs={24} sm={12} md={8} lg={8} xl={5}>
+          <Col xs={24} sm={12} lg={6}>
             <Card>
               <Statistic
-                title="Byte Weighted Locality Score"
-                value={formatLocalityScore(payload.byte_weighted_locality_score.local_content_pct)}
-                valueStyle={{ color: payload.byte_weighted_locality_score.local_content_pct >= 0.55 ? '#3f8600' : '#cf1322' }}
+                title="Byte Weighted Locality"
+                value={formatLocalityScore(summary.byte_weighted_locality?.local_pct)}
+                valueStyle={{ color: summary.byte_weighted_locality?.local_pct >= 0.50 ? '#3f8600' : '#cf1322' }}
               />
             </Card>
           </Col>
-          <Col xs={24} sm={12} md={8} lg={8} xl={5}>
+          <Col xs={24} sm={12} lg={6}>
             <Card>
               <Statistic
-                title="Total Countries"
-                value={summary.counts.total_countries || 0}
-                prefix={<GlobalOutlined />}
+                title="Regional Locality"
+                value={formatLocalityScore(summary.regional_locality?.unweighted)}
+                valueStyle={{ color: summary.regional_locality?.unweighted >= 0.50 ? '#3f8600' : '#cf1322' }}
               />
             </Card>
           </Col>
-          <Col xs={24} sm={12} md={12} lg={12} xl={5}>
+          <Col xs={24} sm={12} lg={6}>
+            <Card>
+              <Statistic
+                title="Byte Weighted Regional Locality"
+                value={formatLocalityScore(summary.regional_locality?.weighted)}
+                valueStyle={{ color: summary.regional_locality?.weighted >= 0.50 ? '#3f8600' : '#cf1322' }}
+              />
+            </Card>
+          </Col>
+        </Row>
+      </div>
+
+      {/* Primary Metrics Cards - Row 2 */}
+      <div className="col-span-full">
+        <Row gutter={[16, 16]}>
+          <Col xs={24} sm={12} lg={6}>
+            <Card>
+              <Statistic
+                title="Global Locality"
+                value={formatLocalityScore(summary.global_locality?.unweighted)}
+                valueStyle={{ color: summary.global_locality?.unweighted < 0.50 ? '#3f8600' : '#cf1322' }}
+              />
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} lg={6}>
+            <Card>
+              <Statistic
+                title="Byte Weighted Global Locality"
+                value={formatLocalityScore(summary.global_locality?.weighted)}
+                valueStyle={{ color: summary.global_locality?.weighted < 0.50 ? '#3f8600' : '#cf1322' }}
+              />
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} lg={6}>
             <Card>
               <Statistic
                 title="Total ASNs"
-                value={summary.counts.total_asns || 0}
+                value={summary.counts?.total_asns || 0}
                 prefix={<ApartmentOutlined />}
               />
             </Card>
           </Col>
-          <Col xs={24} sm={12} md={12} lg={12} xl={5}>
+          <Col xs={24} sm={12} lg={6}>
             <Card>
               <Statistic
                 title="Total CDNs"
-                value={summary.counts.total_cdns || 0}
+                value={summary.counts?.total_cdns || 0}
                 prefix={<CloudServerOutlined />}
               />
             </Card>
